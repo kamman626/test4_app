@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="well">
+      <h2>Contact Us !</h2>
+    </div>
+
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="form-group">
+        <label class="control-label" for="name" [class.test-danger] = "!name.valid">name:</label>
+        <input type="text" class="form-control" id="name" name="name" #name="ngModel" [(ngModel)]="contactDB.name" required autofocus>
+        <div *ngIf="name.errors?.required">
+          <span class="text-danger">
+            Warning : missing name
+          </span>
+      </div>
+    </div>
+
+      <div class="form-group">
+        <label class="control-label" for="name">email:</label>
+        <input type="email" class="form-control" id="email" #email="ngModel" [(ngModel)]="contactDB.email" name="email" required >
+        <div *ngIf="email.errors?.required">
+          <span class="text-danger">
+            Warning : missing email
+          </span>
+      </div>
+
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="name">Message:</label>
+        <input type="email" class="form-control" id="message" #message="ngModel" [(ngModel)]="contactDB.message" name="message" required >
+        <div *ngIf="message.errors?.required">
+          <span class="text-danger">
+            Warning : missing message
+          </span>
+      </div>
+
+      </div>
+
+
+      <button class="btn btn-primary pull-right" type="submit">Send</button>
+    </form>
+    <div class="alert alert-danger" *ngIf="warning">
+      {{warning}}
+    </div>
+  </div>
+</div>

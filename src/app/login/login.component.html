@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="well">
+      <h2>Login</h2>
+      <p>Enter your login information below:
+    </div>
+
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="form-group">
+        <label class="control-label" for="name">User:</label>
+        <input type="text" class="form-control" id="userName" name="userName" #userName="ngModel" [(ngModel)]="user.userName" pattern="[a-zA-Z]*" required  autofocus>
+      </div>
+      <div *ngIf="userName.errors?.required">
+        <span class="text-danger">
+          Warning : missing username
+        </span>
+    </div>
+
+      <div class="form-group">
+        <label class="control-label" for="name">Password:</label>
+        <input type="password" class="form-control" id="password" #password="ngModel" [(ngModel)]="user.password" name="password" pattern="[a-zA-Z]*" required >
+        <div *ngIf="password.errors?.required">
+          <span class="text-danger">
+            Warning : missing password
+          </span>
+      </div>
+
+      </div>
+
+      <div class="alert alert-danger" *ngIf="warning">
+        {{warning}}
+      </div>
+
+      <button class="btn btn-primary pull-right" type="submit">Login</button>
+    </form>
+
+  </div>
+</div>
